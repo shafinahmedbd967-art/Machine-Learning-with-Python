@@ -61,6 +61,9 @@ Machine-Learning-with-Python/
 ├── Class 06/
 │   └── ML_With_Python_Class06_ipynb.ipynb
 │
+├── Class 07/
+│   └── 5048.csv
+│   └── ML_With_Python_Class07_ipynb.ipynb
 └── README.md
 ```
 
