@@ -69,6 +69,244 @@ Machine-Learning-with-Python/
 ```
 
 ---
+# 📚 Class-wise Learning Journey
+
+## 🎓 Class 01 — Foundations of Data Ingestion & Dataset Inspection
+
+### Topics Covered
+
+* Introduction to Machine Learning workflow
+* Python environment setup for ML
+* Data loading using Pandas
+* Reading CSV files using `pd.read_csv()`
+* Dataset structure inspection
+* Understanding rows and columns
+* Initial missing value identification
+* Exploratory dataset analysis
+
+### Key Concepts
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+dataset = pd.read_csv("titanic.csv")
+dataset.head()
+dataset.info()
+dataset.isnull().sum()
+```
+
+---
+
+## 🎓 Class 02 — Missing Data Handling & Statistical Imputation
+
+### Topics Covered
+
+* Missing value diagnosis
+* Null value counting
+* Data visualization using Matplotlib
+* Mean Imputation
+* Median Imputation
+* Mode Imputation
+* Missing value verification
+
+### Key Concepts
+
+```python
+dataset.isnull().sum()
+
+dataset["Agemean"] = dataset["Age"].fillna(dataset["Age"].mean())
+
+dataset["Agemode"] = dataset["Age"].fillna(
+    dataset["Age"].mode()[0]
+)
+
+dataset["Agemedian"] = dataset["Age"].fillna(
+    dataset["Age"].median()
+)
+```
+
+---
+
+## 🎓 Class 03 — Random Sample Imputation & Correlation Analysis
+
+### Topics Covered
+
+* Random Sample Imputation
+* DataFrame slicing and filtering
+* Feature and target variable understanding
+* Correlation analysis
+* Heatmap visualization
+* Study Hours vs Exam Score analysis
+* Introduction to regression concepts
+
+### Key Concepts
+
+```python
+random_sample = dataset["Age"].dropna().sample(
+    dataset["Age"].isnull().sum(),
+    random_state=0
+)
+
+dataset.corr()
+
+import seaborn as sns
+sns.heatmap(dataset.corr(), annot=True)
+```
+
+---
+
+## 🎓 Class 04 — Feature Engineering & Feature Selection
+
+### Topics Covered
+
+* Mobile dataset analysis
+* Feature variance inspection
+* Feature importance analysis
+* Chi-Square Feature Selection
+* SelectKBest
+* ExtraTreesClassifier
+* Correlation-based feature filtering
+
+### Key Concepts
+
+```python
+from sklearn.feature_selection import SelectKBest, chi2
+
+bestfeatures = SelectKBest(
+    score_func=chi2,
+    k=10
+)
+
+from sklearn.ensemble import ExtraTreesClassifier
+
+model = ExtraTreesClassifier()
+model.fit(X, y)
+```
+
+---
+
+## 🎓 Class 05 — Data Transformation & Train-Test Split
+
+### Topics Covered
+
+* Handling categorical data
+* Label Encoding
+* Feature matrix creation
+* Target variable extraction
+* Train-Test Split
+* Dataset preparation for ML models
+
+### Key Concepts
+
+```python
+from sklearn.preprocessing import LabelEncoder
+
+le = LabelEncoder()
+
+dataset["column"] = le.fit_transform(
+    dataset["column"]
+)
+
+X = dataset.iloc[:, :-1]
+y = dataset.iloc[:, -1]
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.20,
+    random_state=42
+)
+```
+
+---
+
+## 🎓 Class 06 — Machine Learning Models & Performance Evaluation
+
+### Topics Covered
+
+### Tree-Based Models
+
+* Decision Tree
+* Random Forest
+* Extra Trees Classifier
+
+### Boosting Algorithms
+
+* AdaBoost
+* Gradient Boosting
+
+### Distance-Based Algorithms
+
+* K-Nearest Neighbors (KNN)
+
+### Margin-Based Algorithms
+
+* Support Vector Classifier (SVC)
+
+### Linear Models
+
+* Ridge Classifier
+* SGD Classifier
+
+### Probabilistic Models
+
+* Gaussian Naive Bayes
+
+### Performance Evaluation
+
+* Accuracy Score
+* Model Comparison
+* Benchmark Ranking
+
+### Key Concepts
+
+```python
+from sklearn.metrics import accuracy_score
+
+ypred = model.predict(X_test)
+
+accuracy_score(y_test, ypred)
+```
+
+---
+
+## 🎓 Class 07 — End-to-End Machine Learning Pipeline
+
+### Topics Covered
+
+* Complete Machine Learning workflow
+* New dataset implementation
+* Feature preprocessing
+* Correlation analysis
+* Data cleaning pipeline
+* Feature transformation
+* Multi-model evaluation
+* End-to-end predictive system development
+
+### Learning Outcome
+
+By the end of this class, I was able to:
+
+✅ Load datasets
+
+✅ Clean and preprocess data
+
+✅ Handle missing values
+
+✅ Encode categorical features
+
+✅ Select important features
+
+✅ Train multiple ML algorithms
+
+✅ Evaluate model performance
+
+✅ Build a complete Machine Learning pipeline
+
+---
 
 # 💻 Technologies Used
 
